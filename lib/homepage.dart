@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,27 +9,20 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 100),
             Container(
-              alignment: Alignment.center,
-              child: const Text(
-                  'All the Gaalis are added by users only the developer has no consent over it'),
-            ),
-            const SizedBox(height: 50),
-            Container(
-              alignment: Alignment.center,
-              child: const Text(
-                'Add a new Gaali',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
+              alignment: Alignment.topLeft,
+              child: Stack(
+                children: [
+                  SvgPicture.asset(
+                    'assets/svg/color-morph.svg',
+                    width: MediaQuery.of(context).size.width,
+                  ),
+                ],
               ),
             ),
-            ElevatedButton(onPressed: (){}, child: const Text('add gaali'),),
           ],
         ),
       ),
