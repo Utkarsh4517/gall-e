@@ -3,8 +3,20 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:galle/dropdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  String currentValue = 'Hindi';
+  void updateDropDownValue(String newValue) {
+    setState(() {
+      currentValue = newValue;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,8 +76,12 @@ class HomePage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            DropDown(),
-                            SizedBox(width: width * 0.1,),
+                            DropDown(
+                              onValueChanged: updateDropDownValue,
+                            ),
+                            SizedBox(
+                              width: width * 0.1,
+                            ),
                             Container(
                               width: width * 0.08,
                               height: width * 0.03,

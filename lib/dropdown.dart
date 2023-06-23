@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
 class DropDown extends StatefulWidget {
-  const DropDown({super.key});
+  final ValueChanged<String>? onValueChanged;
+  const DropDown({
+    this.onValueChanged,
+    super.key,
+  });
 
   @override
   State<DropDown> createState() => _DropDownState();
@@ -18,12 +22,14 @@ class _DropDownState extends State<DropDown> {
     'Haryanvi',
   ];
   String dropDownValue = '';
-  
+
   @override
   void initState() {
     dropDownValue = values.first;
     super.initState();
   }
+
+  String get currentDropDownValue => dropDownValue;
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
@@ -42,8 +48,24 @@ class _DropDownState extends State<DropDown> {
       onChanged: (String? value) {
         setState(() {
           dropDownValue = value!;
+          DropDownValueHolder.setDropDownValue(dropDownValue);
         });
+        if (widget.onValueChanged != null) {
+          widget.onValueChanged!(dropDownValue);
+        }
       },
     );
+  }
+}
+
+class DropDownValueHolder {
+  static String dropDownValue = '';
+
+  static void setDropDownValue(String value) {
+    dropDownValue = value;
+  }
+
+  static String getDropDownValue() {
+    return dropDownValue;
   }
 }
