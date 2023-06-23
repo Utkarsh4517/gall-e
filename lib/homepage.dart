@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:galle/dropdown.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,7 +8,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double width =  MediaQuery.of(context).size.width;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -29,27 +30,61 @@ class HomePage extends StatelessWidget {
                         Text(
                           'Frustration is the key to downfall',
                           style: GoogleFonts.chivo(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: width * 0.05
-                          ),
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: width * 0.05),
                         ),
                         Text(
                           'and Frustrating someone else is the key to success!!',
                           style: GoogleFonts.chivo(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: width * 0.03
-                          ),
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: width * 0.03),
                         ),
                         Text(
                           'SO BECOME A PART OF THIS EPIC COMMUNITY BY CONTRIBUTING TO GALI - AI',
                           style: GoogleFonts.chivo(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: width * 0.01
-                          ),
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: width * 0.01),
                         ),
+                        SizedBox(
+                          height: width * 0.05,
+                        ),
+                        Text(
+                          'Start by selecting your language',
+                          style: GoogleFonts.chivo(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: width * 0.007),
+                        ),
+                        SizedBox(
+                          height: width * 0.01,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            DropDown(),
+                            SizedBox(width: width * 0.1,),
+                            Container(
+                              width: width * 0.08,
+                              height: width * 0.03,
+                              decoration: BoxDecoration(
+                                  color: Colors.grey,
+                                  borderRadius: BorderRadius.circular(12)),
+                              child: Center(
+                                child: Text(
+                                  'Generate Gali',
+                                  style: GoogleFonts.chivo(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: width * 0.007,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   )
