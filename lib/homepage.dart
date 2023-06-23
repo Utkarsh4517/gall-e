@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int count = 10;
   final galiController = TextEditingController();
   String currentValue = 'Hindi';
   String galiToShow = '';
@@ -104,6 +105,8 @@ class _HomePageState extends State<HomePage> {
                                     fetchMarathiGali();
                                   } else if (currentValue == 'Haryanvi') {
                                     fetchHaryanviGali();
+                                  } else if(currentValue == 'Tamil') {
+                                    fetchTamilGali();
                                   }
                                 },
                                 child: const Text('Generate Gaali'),
@@ -165,7 +168,23 @@ class _HomePageState extends State<HomePage> {
                                     shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(10))),
-                                onPressed: () {},
+                                onPressed: () {
+                                  if (currentValue == 'Hindi') {
+                                    setHindiGali();
+                                  } else if (currentValue == 'Bhojpuri') {
+                                    setBhojpuriGali();
+                                  } else if (currentValue == 'English') {
+                                    setEnglishGali();
+                                  } else if (currentValue == 'Bengali') {
+                                    setBengaliGali();
+                                  } else if (currentValue == 'Marathi') {
+                                    setMarathiGali();
+                                  } else if (currentValue == 'Haryanvi') {
+                                    setHaryanviGali();
+                                  } else if (currentValue == 'Tamil') {
+                                    setTamilGali();
+                                  }
+                                },
                                 child: Text('Upload'),
                               ),
                             ),
@@ -324,5 +343,63 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       galiToShow = randomElement;
     });
+  }
+
+  /// methods to add new gali
+
+  void setHindiGali() async {
+    FirebaseFirestore.instance.collection('hindi').doc('hindi').set({
+      'userAddedGali$count': galiController.text,
+    }, SetOptions(merge: true));
+    galiController.clear();
+    count++;
+  }
+
+  void setBhojpuriGali() async {
+    FirebaseFirestore.instance.collection('bhojpuri').doc('bhojpuri').set({
+      'userAddedGali$count': galiController.text,
+    }, SetOptions(merge: true));
+    galiController.clear();
+    count++;
+  }
+
+  void setBengaliGali() async {
+    FirebaseFirestore.instance.collection('bengali').doc('bengali').set({
+      'userAddedGali$count': galiController.text,
+    }, SetOptions(merge: true));
+    galiController.clear();
+    count++;
+  }
+
+  void setEnglishGali() async {
+    FirebaseFirestore.instance.collection('english').doc('english').set({
+      'userAddedGali$count': galiController.text,
+    }, SetOptions(merge: true));
+    galiController.clear();
+    count++;
+  }
+
+  void setMarathiGali() async {
+    FirebaseFirestore.instance.collection('marathi').doc('marathi').set({
+      'userAddedGali$count': galiController.text,
+    }, SetOptions(merge: true));
+    galiController.clear();
+    count++;
+  }
+
+  void setHaryanviGali() async {
+    FirebaseFirestore.instance.collection('haryanvi').doc('haryanvi').set({
+      'userAddedGali$count': galiController.text,
+    }, SetOptions(merge: true));
+    galiController.clear();
+    count++;
+  }
+
+  void setTamilGali() async {
+    FirebaseFirestore.instance.collection('tamil').doc('tamil').set({
+      'userAddedGali$count': galiController.text,
+    }, SetOptions(merge: true));
+    galiController.clear();
+    count++;
   }
 }
