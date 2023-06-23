@@ -14,6 +14,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final galiController = TextEditingController();
   String currentValue = 'Hindi';
   String galiToShow = '';
   void updateDropDownValue(String newValue) {
@@ -86,38 +87,26 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(
                               width: width * 0.1,
                             ),
-                            GestureDetector(
-                              onTap: () {
-                                if (currentValue == 'Hindi') {
-                                  fetchHindiGali();
-                                } else if (currentValue == 'Bhojpuri') {
-                                  fetchBhojpuriGali();
-                                } else if (currentValue == 'English') {
-                                  fetchEnglishGali();
-                                } else if (currentValue == 'Bengali') {
-                                  fetchBengaliGali();
-                                } else if (currentValue == 'Marathi') {
-                                  fetchMarathiGali();
-                                } else if (currentValue == 'Haryanvi') {
-                                  fetchHaryanviGali();
-                                }
-                              },
-                              child: Container(
-                                width: width * 0.08,
-                                height: width * 0.03,
-                                decoration: BoxDecoration(
-                                    color: Colors.grey,
-                                    borderRadius: BorderRadius.circular(12)),
-                                child: Center(
-                                  child: Text(
-                                    'Generate Gali',
-                                    style: GoogleFonts.chivo(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: width * 0.007,
-                                    ),
-                                  ),
-                                ),
+                            SizedBox(
+                              width: width * 0.08,
+                              height: width * 0.025,
+                              child: ElevatedButton(
+                                onPressed: () {
+                                  if (currentValue == 'Hindi') {
+                                    fetchHindiGali();
+                                  } else if (currentValue == 'Bhojpuri') {
+                                    fetchBhojpuriGali();
+                                  } else if (currentValue == 'English') {
+                                    fetchEnglishGali();
+                                  } else if (currentValue == 'Bengali') {
+                                    fetchBengaliGali();
+                                  } else if (currentValue == 'Marathi') {
+                                    fetchMarathiGali();
+                                  } else if (currentValue == 'Haryanvi') {
+                                    fetchHaryanviGali();
+                                  }
+                                },
+                                child: const Text('Generate Gaali'),
                               ),
                             ),
                           ],
@@ -130,6 +119,58 @@ class _HomePageState extends State<HomePage> {
                               fontWeight: FontWeight.bold,
                               fontSize: width * 0.02),
                         ),
+                        Text(
+                          'Get one step ahead and contribute to the community',
+                          style: GoogleFonts.chivo(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: width * 0.01),
+                        ),
+                        SizedBox(height: width * 0.05),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: width * 0.4,
+                              child: TextField(
+                                controller: galiController,
+                                decoration: InputDecoration(
+                                  prefixIconColor: Colors.white,
+                                  enabledBorder: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(20)),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: const BorderSide(
+                                        color: Colors.black,
+                                        width: 1,
+                                      ),
+                                      borderRadius: BorderRadius.circular(25)),
+                                  focusColor: Colors.white,
+                                  fillColor: Colors.grey[100],
+                                  filled: true,
+                                  hintText:
+                                      'Please enter a valid Gaali without googling',
+                                  hintStyle: const TextStyle(
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.w300,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(width: width * 0.04),
+                            SizedBox(
+                              width: width * 0.08,
+                              height: width * 0.025,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(10))),
+                                onPressed: () {},
+                                child: Text('Upload'),
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   )

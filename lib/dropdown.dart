@@ -33,16 +33,23 @@ class _DropDownState extends State<DropDown> {
   @override
   Widget build(BuildContext context) {
     return DropdownButton<String>(
+      dropdownColor: Colors.black,
+      borderRadius: BorderRadius.circular(10),
       value: dropDownValue,
       elevation: 16,
       underline: Container(
         height: 2,
-        color: Colors.black,
+        color: Colors.white,
       ),
       items: values.map<DropdownMenuItem<String>>((String value) {
         return DropdownMenuItem<String>(
           value: value,
-          child: Text(value),
+          child: Text(
+            value,
+            style: const TextStyle(
+              color: Colors.white,
+            ),
+          ),
         );
       }).toList(),
       onChanged: (String? value) {
